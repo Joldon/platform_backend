@@ -1,22 +1,18 @@
-// const mongoose = require('mongoose');
-// const { Schema } = mongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-// const UserSchema = new Schema({
-//     name: {
-//         type: String,
-//         required: [true, 'Please add a name'],
-//         maxlength: [75, 'The name can be max 75 chars long']
-//     },
-//     surname: {
-//         type: String,
-//         required: [true, 'Please add a surname'],
-//         maxlength: [75, 'The surname can be max 75 chars long']
-//     },
-//     age: {
-//         type: Number
-//     }
-// });
+const UserSchema = new Schema({
+    email: {
+        type: String,
+        required: [true, 'Please add a email'],
+        maxlength: [30, 'The email can be max 30 chars long']
+    },
+    nickname: {
+        type: String,
+        required: [true, 'Please add a nickname'],
+        maxlength: [10, 'The surname can be max 10 chars long']
+    }
+});
 
-// // User --> users --> associates the schema to the collection
-// // Movie --> movies
-// module.exports = mongoose.model('User', UserSchema);
+// User --> users --> associates the schema to the collection
+module.exports = mongoose.model('User', UserSchema);
