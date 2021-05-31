@@ -5,9 +5,9 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 5000;
 
-const locations = require('./api/locations');
-const users = require('./api/users');
-const posts = require('./api/posts')
+const locationApi = require('./api/locations');
+const userApi = require('./api/users');
+const postApi = require('./api/posts')
 
 const errorHandler = require('./middlewares/error')
 const connectDB = require('./dbinit');
@@ -20,9 +20,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', users)
-app.use('/locations', locations);
-app.use('/posts', posts)
+app.use('/users', userApi)
+app.use('/locations', locationApi);
+app.use('/posts', postApi)
 
 app.use(errorHandler);
 

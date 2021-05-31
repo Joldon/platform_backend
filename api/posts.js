@@ -1,22 +1,26 @@
 const express = require("express");
 const api = express.Router();
-const {
-  getPosts,
-  getPost,
-  createPost,
-  deletePost,
-  updatePost
-} = require('../controllers/posts');
+
+const postController = require('../controllers/postController')
+
+api
+  .route("/create")
+  .post(postController.createPost)
+
+api
+  .route('/:id/update')
+  .put(postController.updatePost)
+
+api
+  .route('/:id/delete')
+  .delete(postController.deletePost)
+
+api
+  .route('/:id')
+  .get(postController.getPost)
 
 api
   .route("/")
-  .get(getPosts)
-  .post(createPost)
+  .get(postController.getPosts)
 
-api
-    .route('/:id')
-    .get(getPost)
-    .put(updatePost)
-    .delete(deletePost)
-
-  module.exports = api;
+module.exports = api;

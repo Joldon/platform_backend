@@ -84,3 +84,15 @@ status//status to be allowed
         type: number
     latitude
         type: number
+
+  <!-- city: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'City',
+    required: [true, 'Please add a city'],
+  },
+  tags: {
+    type: [mongoose.Schema.ObjectId],
+    ref: 'Tag',
+    required: [true, 'Please add a tag'],
+  } -->
+  

@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const Post = require('../models/Post');
-
 // const { ObjectId } = mongoose.Types;
 
+// Display list of all Posts
 const getPosts = async (req, res, next) => {
   try {
     const posts = await Post.find();
+    // .sort(['date', 'ascending'])
     res.json({
       success: true,
       msg: 'show all posts',
@@ -16,6 +17,7 @@ const getPosts = async (req, res, next) => {
   }
 };
 
+// Display one selected Post
 const getPost = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -30,6 +32,7 @@ const getPost = async (req, res, next) => {
     }
 };
 
+// Handle Location create on POST
 const createPost = async (req, res, next) => {
     try {
         const { region, country, city, title, story, picture, user, status } = req.body;
@@ -40,6 +43,7 @@ const createPost = async (req, res, next) => {
     }
 };
 
+// Handle Post update on PUT
 const updatePost = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -55,6 +59,7 @@ const updatePost = async (req, res, next) => {
     }
 };
 
+// Handle Location delete on DELETE
 const deletePost = async (req, res, next) => {
     try {
         const { id } = req.params;
