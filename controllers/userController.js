@@ -1,8 +1,12 @@
+// const mongoose = require("mongoose");
 const User = require('../models/User');
+// const { ObjectId } = mongoose.Types;
 
+// Display list of all Users
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
+    // .sort(['nickname', 'ascending'])
     res.json({
       success: true,
       msg: 'show some users',
@@ -11,9 +15,9 @@ const getUsers = async (req, res, next) => {
   } catch(err) {
     next(err)
   }
+};
 
-}
-
+// Display one selected User
 const getUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -26,9 +30,9 @@ const getUser = async (req, res, next) => {
   } catch(err) {
     next(err)
   }
+};
 
-}
-
+// Handle User create on POST
 const createUser = async (req, res, next) => {
   try {
       const { email, nickname } = req.body;
@@ -41,9 +45,9 @@ const createUser = async (req, res, next) => {
     } catch(err) {
       next(err)
     }
-  
-}
+};
 
+// Handle User update on PUT
 const updateUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -57,8 +61,9 @@ const updateUser = async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-}
+};
 
+// Handle User delete on DELETE
 const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -72,7 +77,7 @@ const deleteUser = async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-}
+};
 
 module.exports = {
   getUser,

@@ -1,26 +1,26 @@
 const express = require("express");
-
-const {
-  getUser,
-  getUsers,
-  createUser,
-  deleteUser,
-  updateUser
-} = require('../controllers/users.js')
-
 const api = express.Router();
-
+  
+const userController = require('../controllers/userController')
+  
 api
-  .route("/")
-  .get(getUsers)
-  .post(createUser)
-
+  .route("/create")
+  .post(userController.createUser)
+  
+api
+  .route('/:id/update')
+  .put(userController.updateUser)
+  
+api
+  .route('/:id/delete')
+  .delete(userController.deleteUser)
+  
 api
   .route('/:id')
-  .get(getUser)
-  .delete(deleteUser)
-  .put(updateUser);
+  .get(userController.getUser)
+  
+api
+  .route("/")
+  .get(userController.getUsers)
 
 module.exports = api;
-
-

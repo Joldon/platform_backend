@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const Location = require('../models/Location');
-
 // const { ObjectId } = mongoose.Types;
 
+// Display list of all Locations
 const getLocations = async (req, res, next) => {
   try {
-    const locations = await Location.find();
+    const locations = await Location.find()
+    // .sort(['name', 'ascending'])
     res.json({
       success: true,
       msg: 'show all locations',
@@ -16,6 +17,7 @@ const getLocations = async (req, res, next) => {
   }
 };
 
+// Display one selected Location 
 const getLocation = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -30,6 +32,7 @@ const getLocation = async (req, res, next) => {
     }
 };
 
+// Handle Location create on POST
 const createLocation = async (req, res, next) => {
     try {
         const { longitude, latitude } = req.body;
@@ -40,6 +43,7 @@ const createLocation = async (req, res, next) => {
     }
 };
 
+// Handle Location update on PUT
 const updateLocation = async (req, res, next) => {
     try {
         const { id } = req.params;
@@ -55,6 +59,7 @@ const updateLocation = async (req, res, next) => {
     }
 };
 
+// Handle Location delete on DELETE
 const deleteLocation = async (req, res, next) => {
     try {
         const { id } = req.params;

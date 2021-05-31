@@ -14,5 +14,4 @@ const UserSchema = new Schema({
     }
 });
 
-// User --> users --> associates the schema to the collection
 module.exports = mongoose.model('User', UserSchema);

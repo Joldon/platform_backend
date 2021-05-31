@@ -21,6 +21,13 @@ PostSchema
         return DateTime.fromJSDate(this.date).toLocaleString(DateTime.DATE_MED);
     });
 
+// Virtual for post's URL
+PostSchema
+    .virtual('url')
+    .get(function () {
+      return '/post/' + this._id;
+    });
+
 module.exports = mongoose.model('Post', PostSchema);
    
   //   region of origin
