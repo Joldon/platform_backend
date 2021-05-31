@@ -12,9 +12,7 @@ const postApi = require('./api/posts')
 const errorHandler = require('./middlewares/error')
 const connectDB = require('./dbinit');
 const app = express();
-
 connectDB();
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
