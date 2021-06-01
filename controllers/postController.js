@@ -5,7 +5,10 @@ const Post = require('../models/Post');
 // Display list of all Posts
 const getPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find()
+        .populate('locations')
+        // .populate('location')
+        // .populate('locationId');
     // .sort(['date', 'ascending'])
     res.json({
       success: true,
@@ -21,7 +24,8 @@ const getPosts = async (req, res, next) => {
 const getPost = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const post = await Post.findById(id);
+        const post = await Post.findById(id)
+            .populate('locations')
         res.json({
             success: true,
             msg: 'show selected post',
