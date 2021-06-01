@@ -4,8 +4,10 @@ const {DateTime} = require('luxon')
 
 const PostSchema = new Schema({
     region : { type: String, required: true, enum:['Eastern Caribbean', 'South Pacific', 'West Pacific', 'West Africa', 'East Africa'], default:''},
-    country : {type: String, required: true },
-    locations : { type: Schema.Types.ObjectId, ref: 'Location', required: false },
+    country : { type: String, required: true },
+    locationName : {type: String, required: true },  
+    location : { type: Schema.Types.ObjectId, ref: 'Location', required: false },
+    // location : { type: mongoose.Schema.ObjectId, ref: 'Location', required: true },
     // locationId : { type: Schema.Types.ObjectId, ref: 'Location', required: false },
     // locationId: { type: mongoose.Schema.ObjectId, ref: 'Location', required: false },
     title : { type: String, required: true },
