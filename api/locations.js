@@ -4,23 +4,14 @@ const api = express.Router();
 const locationController = require('../controllers/locationController')
 
 api
-  .route("/create")
-  .post(locationController.createLocation)
-
-api
-  .route('/:id/update')
-  .put(locationController.updateLocation)
-
-  api
-  .route('/:id/delete')
-  .delete(locationController.deleteLocation)
-
-api
-  .route('/:id')
-  .get(locationController.getLocation)
-
-api
   .route("/")
+  .post(locationController.createLocation)
   .get(locationController.getLocations)
+
+api
+  .route('/:id/')
+  .put(locationController.updateLocation)
+  .delete(locationController.deleteLocation)
+  .get(locationController.getLocation)
 
 module.exports = api;

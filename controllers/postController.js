@@ -5,7 +5,7 @@ const Post = require('../models/Post');
 // Display list of all Posts
 const getPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find()
+    const posts = await Post.find({ status: true }) //apply filters inside find() 
         .populate('location')
     // .sort(['date', 'ascending'])
     res.json({
