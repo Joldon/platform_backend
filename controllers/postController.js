@@ -38,7 +38,8 @@ const getPost = async (req, res, next) => {
 const createPost = async (req, res, next) => {
     try {
         const { region, country, city, title, story, picture, user, status } = req.body;
-        const post = await Post.create({ region, country, city, title, story, picture, user, status });
+        const post = await Post.create({ region, country, city, title, story, picture, user, status })
+            .populate('location')
         res.json({ success: true, msg: 'show new post', data: post})
     } catch(err) {
         next(err)
@@ -50,7 +51,8 @@ const updatePost = async (req, res, next) => {
     try {
         const { id } = req.params;
         const { region, country, city, title, story, picture, user, status } = req.body;
-        const post = await post.findByIdAndUpdate(id, { region, country, city, title, story, picture, user, status }, { new: true});
+        const post = await post.findByIdAndUpdate(id, { region, country, city, title, story, picture, user, status }, { new: true})
+            .populate('location')
         res.json({
             success: true,
             msg: `post with ${id} updated`,
@@ -65,7 +67,8 @@ const updatePost = async (req, res, next) => {
 const deletePost = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const post = await Post.findByIdAndDelete(id);
+        const post = await Post.findByIdAndDelete(id)
+            .populate('location')
         res.json({
             success: true,
             msg: `post with id ${id} deleted`,
