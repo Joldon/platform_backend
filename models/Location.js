@@ -2,17 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const LocationSchema = new Schema({
-    longitude: {
-        type: Number,
-        required: true,
-        maxlength: [20],
-      
-    },
-    latitude: {
-        type: Number,
-        required: true,
-        maxlength: [20]
-    },
+    id : { type:Schema.Types.ObjectId },
+    name: { type: String, required: true },
+    longitude: { type: Number, required: true },
+    latitude: { type: Number, required: true },
   });
 
 // Virtual for location's URL

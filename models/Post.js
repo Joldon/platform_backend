@@ -3,17 +3,16 @@ const Schema = mongoose.Schema;
 const {DateTime} = require('luxon')
 
 const PostSchema = new Schema({
-    region : { type: String, required: true, enum:['Eastern Caribbean', 'South Pacific', 'West Pacific', 'West Africa', 'East Africa'], default:''},
+    id : { type: Schema.Types.ObjectId },
+    region : { type: String, required: false},
+    // , enum:['Eastern Caribbean', 'South Pacific', 'West Pacific', 'West Africa', 'East Africa'], default:''
     country : { type: String, required: true },
-    locationName : {type: String, required: true },  
+    locationName : { type: String, required: true },  
     location : { type: Schema.Types.ObjectId, ref: 'Location', required: false },
-    // location : { type: mongoose.Schema.ObjectId, ref: 'Location', required: true },
-    // locationId : { type: Schema.Types.ObjectId, ref: 'Location', required: false },
-    // locationId: { type: mongoose.Schema.ObjectId, ref: 'Location', required: false },
     title : { type: String, required: true },
     story : { type: String, required: true },
-    image : { type: String, required: false }, //picture=url in MongoDB
-    email : { type: String, required: false },
+    image : { type: String, required: false }, //image=url in MongoDB
+    email : { type: String, required: false, match: [ /^\w+([\/-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email' ]},
     nickname: { type: String, required: true },
     // user: { type: Schema.Types.ObjectId, ref: 'User', required: false}, //user=nickname in MongoDB
     status: { type: Boolean, required: true, default: false },
