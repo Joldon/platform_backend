@@ -1,17 +1,17 @@
 const express = require("express");
 const api = express.Router();
 
-const locationController = require('../controllers/locationController')
+const {getLocations, getLocation, createLocation, updateLocation, deleteLocation} = require('../controllers/locationController')
 
 api
-  .route("/")
-  .post(locationController.createLocation)
-  .get(locationController.getLocations)
+  .route('/')
+  .post(createLocation)
+  .get(getLocations)
 
 api
   .route('/:id/')
-  .put(locationController.updateLocation)
-  .delete(locationController.deleteLocation)
-  .get(locationController.getLocation)
+  .put(updateLocation)
+  .delete(deleteLocation)
+  .get(getLocation)
 
 module.exports = api;

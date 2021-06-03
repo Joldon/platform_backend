@@ -1,6 +1,6 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const Location = require('../models/Location');
-// const { ObjectId } = mongoose.Types;
+const { ObjectId } = mongoose.Types;
 
 // Display list of all Locations
 const getLocations = async (req, res, next) => {
@@ -9,7 +9,7 @@ const getLocations = async (req, res, next) => {
     // .sort(['name', 'ascending'])
     res.json({
       success: true,
-      msg: 'show all locations',
+      msg: 'Show all locations',
       data: locations,
     })  
   } catch(err) {
@@ -24,7 +24,7 @@ const getLocation = async (req, res, next) => {
         const location = await Location.findById(id);
         res.json({
             success: true,
-            msg: 'show selected location',
+            msg: 'Show selected location',
             data: location
         })
     } catch(err) {
@@ -35,9 +35,9 @@ const getLocation = async (req, res, next) => {
 // Handle Location create on POST
 const createLocation = async (req, res, next) => {
     try {
-        const { longitude, latitude } = req.body;
-        const location = await Location.create({ longitude, latitude });
-        res.json({ success: true, msg: 'show new location', data: location})
+        const { name, longitude, latitude } = req.body;
+        const location = await Location.create({ name, longitude, latitude });
+        res.json({ success: true, msg: 'Show new location', data: location})
     } catch(err) {
         next(err)
     }
@@ -47,11 +47,11 @@ const createLocation = async (req, res, next) => {
 const updateLocation = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { longitude, latitude } = req.body;
-        const location = await Location.findByIdAndUpdate(id, { longitude, latitude }, { new: true});
+        const { name, longitude, latitude } = req.body;
+        const location = await Location.findByIdAndUpdate(id, { name, longitude, latitude }, { new: true});
         res.json({
             success: true,
-            msg: `location with ${id} updated`,
+            msg: `Selected location with id(${id}) updated`,
             data: location
         })
     } catch(err) {
@@ -66,7 +66,7 @@ const deleteLocation = async (req, res, next) => {
         const location = await Location.findByIdAndDelete(id);
         res.json({
             success: true,
-            msg: `location with id ${id} deleted`,
+            msg: `Selected location with id(${id}) deleted`,
             data: location
         })
     } catch(err) {

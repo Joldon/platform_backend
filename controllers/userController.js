@@ -9,7 +9,7 @@ const getUsers = async (req, res, next) => {
     // .sort(['nickname', 'ascending'])
     res.json({
       success: true,
-      msg: 'show some users',
+      msg: 'Show all users',
       data: users
     })  
   } catch(err) {
@@ -24,7 +24,7 @@ const getUser = async (req, res, next) => {
     const user = await User.findById(id);
     res.json({
       success: true,
-      msg: 'show selected user',
+      msg: 'Show selected user',
       data: user
     })
   } catch(err) {
@@ -39,7 +39,7 @@ const createUser = async (req, res, next) => {
       const user = await User.create({ email, nickname })
       res.json({
         success: true,
-        msg: 'new user created',
+        msg: 'New user created',
         data: user
       })
     } catch(err) {
@@ -55,7 +55,7 @@ const updateUser = async (req, res, next) => {
     const user = await User.findByIdAndUpdate(id, { email, nickname }, { new: true })
     res.json({
       success: true,
-      msg: `user with id ${id} updated`,
+      msg: `Selected user with id(${id}) updated`,
       data: user
     })
   } catch(err) {
@@ -71,7 +71,7 @@ const deleteUser = async (req, res, next) => {
     const user = await User.findByIdAndDelete(id);
     res.json({
       success: true,
-      msg: `user with id ${id} deleted`,
+      msg: `Selected user with id(${id}) deleted`,
       data: user
     });
   } catch(err) {
