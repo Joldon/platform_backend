@@ -80,11 +80,6 @@ typings/
 .env.test
 .env*.local
 
-#users files
-.users.js
-.userController.js
-.User.js
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
