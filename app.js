@@ -6,7 +6,7 @@ const path = require('path');
 const port = process.env.PORT || 5000;
 
 const locationApi = require('./api/locations');
-const userApi = require('./api/users');
+// const userApi = require('./api/users');
 const postApi = require('./api/posts')
 bodyParser = require('body-parser');
 
@@ -23,7 +23,7 @@ app.use(bodyParser.json()); // Send JSON responses
 
 app.use('/posts', postApi)
 app.use('/locations', locationApi);
-app.use('/users', userApi)
+// app.use('/users', userApi)
 
 app.use(errorHandler);
 
