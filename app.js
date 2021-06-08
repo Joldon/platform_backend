@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 5000;
 
-const locationApi = require('./api/locations');
+const locationApi = require('./api/locations');gi
 // const userApi = require('./api/users');
 const postApi = require('./api/posts')
 bodyParser = require('body-parser');
